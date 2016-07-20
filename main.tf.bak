@@ -1,0 +1,40 @@
+#
+# DO NOT DELETE THESE LINES!
+#
+# Your subnet ID is:
+#
+#     subnet-5a424367
+#
+# Your security group ID is:
+#
+#     sg-ca91a0b1
+#
+# Your AMI ID is:
+#
+#     ami-db24d8b6
+#
+# Your Identity is:
+#
+#     manheim-d3d9446802a44259755d38e6d163e820
+#
+
+provider "aws" {
+  access_key = "AKIAIIMKJXVRSZ2N5AXQ"
+  secret_key = "2WHnmVn7WeoL61gYw9hYz2wSvEqvPwwA3zwLDORh"
+  region     = "us-east-1"
+}
+
+resource "aws_instance" "web" {
+    ami = "ami-db24d8b6"
+    instance_type = "t2.micro"
+
+    subnet_id = "subnet-5a424367"
+    vpc_security_group_ids = ["sg-ca91a0b1"]
+
+    tags {
+     Identity = "manheim-d3d9446802a44259755d38e6d163e820"
+     Name = "WaycoolWeb"
+     Project = "training"
+   }
+}
+
